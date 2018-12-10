@@ -16,7 +16,7 @@ bin/
 *.ipr
 *.iws
 *.uml
-.idea/
+**/.idea/
 */out/*
 
 # Misc

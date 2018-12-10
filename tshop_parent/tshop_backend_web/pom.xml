@@ -54,6 +54,12 @@
             <artifactId>spring-webmvc</artifactId>
         </dependency>
 
+        <!-- fastjson -->
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.mlj.tshop</groupId>

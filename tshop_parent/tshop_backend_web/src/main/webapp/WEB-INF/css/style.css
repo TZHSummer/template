@@ -1,0 +1,18 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+		
+.welcome {
+	color: red;
+	font-size: 26px;
+	text-align: center;
+}
+
+.register {
+	width: 600px;
+	height: 400px;
+	margin: 0 auto;
+	background: #666666;
+	font-size: 14px;
+}
