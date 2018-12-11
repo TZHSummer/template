@@ -29,4 +29,15 @@
         from manager m
         where id=#{id}
     </select>
+
+    <select id="selectByName" parameterType="string" resultMap="managerMapper">
+        select m.id, m.name, m.password, m.enable, m.level
+        from manager m
+        where name=#{name}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into manager (id, name, password, enable, level)
+        value (#{id}, #{name}, #{password}, #{enable}, #{level})
+    </insert>
 </mapper>

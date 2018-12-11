@@ -7,6 +7,10 @@ package com.mlj.tshop.common.constant;
  */
 public interface ManagerConstant {
     /**
+     * ID长度
+     */
+    public static final Integer ID_LENGTH = 6;
+    /**
      * 管理员可用
      */
     public static final Integer MANAGER_ENABLE = 1;

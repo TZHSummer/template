@@ -24,4 +24,15 @@ public interface ManagerDao {
      * 根据id查询
      */
     public Manager selectById(@Param("id") int id);
+
+    /**
+     * 根据name查询
+     */
+    public Manager selectByName(@Param("name") String name);
+
+    /**
+     * 添加数据
+     */
+    public int insert(@Param("id") Integer id, @Param("name") String name, @Param("password") String password,
+                      @Param("enable") Integer enable, @Param("level") Integer level);
 }

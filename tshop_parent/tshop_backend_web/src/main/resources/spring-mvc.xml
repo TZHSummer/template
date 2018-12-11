@@ -38,4 +38,5 @@
 
     <!-- 配置转发映射 -->
     <mvc:view-controller path="/login" view-name="login"/>
+    <mvc:view-controller path="/register" view-name="register"/>
 </beans>
