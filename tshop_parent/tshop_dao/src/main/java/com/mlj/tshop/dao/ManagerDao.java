@@ -18,7 +18,7 @@ public interface ManagerDao {
     /**
      * 查询所有
      */
-    public List<Product> selectAll();
+    public List<Manager> selectAll();
 
     /**
      * 根据id查询

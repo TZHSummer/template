@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(146, 146, 146, 0.3);
+}
+
+.managers {
+    width: 80%;
+    font-size: 20px;
+    margin: 40px auto 0 auto;
+    border:solid #add9c0;
+    border-width:1px 0px 0px 1px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.managers th {
+    border:solid #add9c0;
+    border-width:0px 1px 1px 0px;
+    padding:10px 0px;
+}
+
+.managers td{
+    border:solid #add9c0;
+    border-width:0px 1px 1px 0px;
+    padding:10px 10px;
+}

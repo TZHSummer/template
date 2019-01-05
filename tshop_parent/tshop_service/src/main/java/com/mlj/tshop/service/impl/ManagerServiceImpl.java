@@ -1,6 +1,7 @@
 package com.mlj.tshop.service.impl;
 
 import com.mlj.tshop.common.constant.ManagerConstant;
+import com.mlj.tshop.common.exception.ManagerDisableException;
 import com.mlj.tshop.common.exception.ManagerExistException;
 import com.mlj.tshop.common.exception.ManagerNotExistException;
 import com.mlj.tshop.common.exception.PasswordIncorrectException;
@@ -30,7 +31,7 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public List<Product> findAll() {
+    public List<Manager> findAll() {
         return managerDao.selectAll();
     }
 
@@ -57,13 +58,18 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
     @Override
-    public Manager login(String username, String password) throws ManagerNotExistException, PasswordIncorrectException {
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public Manager login(String username, String password) throws ManagerNotExistException,
+            PasswordIncorrectException, ManagerDisableException {
         Manager manager = this.findByName(username);
 
         if (!password.equals(manager.getPassword())) {
             throw new PasswordIncorrectException("您输入的密码有误！");
+        }else if (manager.getEnable() == ManagerConstant.MANAGER_DISABLE){
+            throw new ManagerDisableException("此管理员账号已被禁用！");
+        }else {
+            return manager;
         }
-        return manager;
     }
 
     @Override
@@ -91,6 +97,16 @@ public class ManagerServiceImpl implements ManagerService {
         } catch (ManagerNotExistException e) {
             e.printStackTrace();
             return id;
+        }
+    }
+
+    @Override
+    public Boolean isEnableById(int id) throws ManagerNotExistException {
+        Manager manager = findById(id);
+        if (manager.getEnable() == ManagerConstant.MANAGER_ENABLE) {
+            return true;
+        }else {
+            return false;
         }
     }
 }

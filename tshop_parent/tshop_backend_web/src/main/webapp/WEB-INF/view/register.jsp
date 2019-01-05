@@ -16,7 +16,6 @@
             //发送表单ajax(阿贾克斯)请求
             //Ajax：Asynchronous JavaScript And XML(异步JavaScript和XML)
             $("input[type=submit]").on('click', function () {
-                alert(JSON.stringify($('#manager').serializeObject()));
                 $.ajax({
                     url: '${pageContext.request.contextPath}/backend/manager/register',
                     type: 'POST',

@@ -39,4 +39,21 @@
     <!-- 配置转发映射 -->
     <mvc:view-controller path="/login" view-name="login"/>
     <mvc:view-controller path="/register" view-name="register"/>
+
+    <!-- 配置后台请求总拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/login"/>
+            <mvc:exclude-mapping path="/register"/>
+            <mvc:exclude-mapping path="/backend/manager/login"/>
+            <mvc:exclude-mapping path="/backend/manager/register"/>
+
+            <mvc:exclude-mapping path="/**/*.js"/>
+            <mvc:exclude-mapping path="/**/*.css"/>
+            <mvc:exclude-mapping path="/**/*.jpg"/>
+            <mvc:exclude-mapping path="/**/*.png"/>
+            <bean class="com.mlj.tshop.backend.interceptor.BackendInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

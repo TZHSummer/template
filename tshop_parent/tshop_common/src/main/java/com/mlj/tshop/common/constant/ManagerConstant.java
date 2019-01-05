@@ -6,6 +6,11 @@ package com.mlj.tshop.common.constant;
  * @author mlj
  */
 public interface ManagerConstant {
+
+    /**
+     * 用户类型
+     */
+    public static final String MANAGER ="manager";
     /**
      * ID长度
      */
