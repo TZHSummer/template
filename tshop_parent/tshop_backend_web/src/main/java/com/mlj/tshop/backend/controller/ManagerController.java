@@ -99,24 +99,28 @@ public class ManagerController {
     public Map<String, Object> login(@RequestBody ManagerVo managerVo, HttpServletRequest request) {
         Map<String, Object> returnedData = new HashMap<>();
         returnedData.put(ControllerConstant.RESULT, ControllerConstant.RESULT_FAILURE);
+        Exception ex = null;
+        String errorMessage = null;
         try {
             Manager manager = managerServiceImpl.login(managerVo.getUsername(), managerVo.getPassword());
             request.getSession().setAttribute(ManagerConstant.MANAGER, manager);
             returnedData.put(ControllerConstant.RESULT, ControllerConstant.RESULT_SUCCESS);
-            returnedData.put(ControllerConstant.ERROR_MESSAGE, "登录成功,即将跳往主页面!");
+            errorMessage = "登录成功,即将跳往主页面!";
         } catch (ManagerNotExistException e) {
             e.printStackTrace();
-            logger.debug(e);
-            returnedData.put(ControllerConstant.ERROR_MESSAGE, "用户不存在!");
+            ex = e;
+            errorMessage = "用户不存在!";
         } catch (PasswordIncorrectException e) {
             e.printStackTrace();
-            logger.debug(e);
-            returnedData.put(ControllerConstant.ERROR_MESSAGE, "密码错误!");
+            ex =e;
+            errorMessage = "密码错误!";
         } catch (ManagerDisableException e){
             e.printStackTrace();
-            logger.debug(e);
-            returnedData.put(ControllerConstant.ERROR_MESSAGE, "此账号已被禁用，详请联系超级管理员!");
+            ex = e;
+            errorMessage = "此账号已被禁用，详请联系超级管理员!";
         }finally {
+            logger.debug(ex);
+            returnedData.put(ControllerConstant.ERROR_MESSAGE, errorMessage);
             return returnedData;
         }
     }
